@@ -1,12 +1,18 @@
 {
-  "name": "dashboard-app",
+  "name": "dashboardapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-image": "docker build -t dashboardapp:prod --target production .",
+    "run-container": "docker run --name dashboardapp -d -p 8080:80 dashboardapp:prod",
+    "remove-image": "docker rmi dashboardapp:prod",
+    "remove-container": "docker rm -f dashboardapp",
+    "docker:prod": "npm run build-image && npm run run-container",
+    "docker-clean:prod": "npm run remove-container && npm run docker:prod"
   },
   "private": true,
   "dependencies": {
