@@ -4,6 +4,10 @@ import {BrowserModule} from "@angular/platform-browser";
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app.routes";
 import {UserModule} from "./user/user.module";
+import {DashboardModule} from "./dashboard/dashboard.module";
+import {ProductsModule} from "./products/products.module";
+import {CategoriesModule} from "./categories/categories.module";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import {UserModule} from "./user/user.module";
     BrowserModule,
     RouterOutlet,
     AppRoutingModule,
-    UserModule
+    AuthModule,
+    UserModule,
+    DashboardModule,
+    ProductsModule,
+    CategoriesModule
   ],
   exports: [],
   bootstrap: [AppComponent]
