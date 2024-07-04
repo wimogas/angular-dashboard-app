@@ -1,26 +1,22 @@
-<table class="table">
+<table class="table align-middle">
   <thead>
   <tr>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Handle</th>
+    <th scope="col">Id</th>
+    <th scope="col">Image</th>
+    <th scope="col">Title</th>
+    <th scope="col">Category</th>
+    <th scope="col">Price</th>
+    <th scope="col">Rating</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>mdo</td>
-  </tr>
-  <tr>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>fat</td>
-  </tr>
-  <tr>
-    <td>Larry</td>
-    <td>The Bird</td>
-    <td>twitter</td>
+  <tr *ngFor="let product of products">
+    <td>{{product.id}}</td>
+    <td><img [ngSrc]="product.image" alt="image" width="50" height="50"></td>
+    <td>{{ product.title | trim: 25 }}</td>
+    <td><span class="badge text-bg-secondary">{{ product.category }}</span></td>
+    <td>{{ product.price }} €</td>
+    <td><i class="bi-star-fill"></i> {{ product.rating.rate }}</td>
   </tr>
   </tbody>
 </table>

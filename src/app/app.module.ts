@@ -8,12 +8,14 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {ProductsModule} from "./products/products.module";
 import {CategoriesModule} from "./categories/categories.module";
 import {AuthModule} from "./auth/auth.module";
+import {provideHttpClient} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   providers: [
+    provideHttpClient()
   ],
   imports: [
     BrowserModule,
