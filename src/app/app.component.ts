@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./auth/services/auth.service";
 import {User} from "./auth/models/User";
 import {Router} from "@angular/router";
+import {ProductsService} from "./products/products.service";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private productsService: ProductsService
   ) {}
 
   ngOnInit() {

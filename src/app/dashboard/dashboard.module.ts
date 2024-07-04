@@ -6,6 +6,7 @@ import {DashboardComponent} from "./dashboard.component";
 import {ListComponent} from "./list/list.component";
 import {ChartComponent} from "./chart/chart.component";
 import {TrimPipe} from "../shared/trim.pipe";
+import {PricePipe} from "../shared/price.pipe";
 
 
 @NgModule({
@@ -15,10 +16,11 @@ import {TrimPipe} from "../shared/trim.pipe";
     ChartComponent
   ],
     imports: [
-      CommonModule,
-      DashboardRoutingModule,
-      NgOptimizedImage,
-      TrimPipe
+        CommonModule,
+        DashboardRoutingModule,
+        NgOptimizedImage,
+        TrimPipe,
+        PricePipe
     ]
 })
 export class DashboardModule { }

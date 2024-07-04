@@ -15,7 +15,7 @@
     <td><img [ngSrc]="product.image" alt="image" width="50" height="50"></td>
     <td>{{ product.title | trim: 25 }}</td>
     <td><span class="badge text-bg-secondary">{{ product.category }}</span></td>
-    <td>{{ product.price }} €</td>
+    <td>{{ product.price | price: 'EUR' }}</td>
     <td><i class="bi-star-fill"></i> {{ product.rating.rate }}</td>
   </tr>
   </tbody>

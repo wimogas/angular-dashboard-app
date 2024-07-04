@@ -7,8 +7,12 @@ import {ProductsService} from "./products.service";
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
-
-  page = 1
+  products: any = []
+  paginatedProducts: any = []
+  start = 0
+  end = 0
+  total = 0
+  limit = 0
 
   constructor(
     private productsService: ProductsService
@@ -16,6 +20,26 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe()
+    this.productsService.getProducts().subscribe({
+      next: data => {
+        this.limit = this.productsService.limit
+        this.end += this.limit
+        this.products = [...data]
+        this.total = this.products.length
+        this.paginatedProducts = [...data].slice(this.start, this.end)
+      }
+    })
+  }
+
+  pageDown() {
+    this.start = this.start - this.productsService.limit
+    this.end-= this.productsService.limit
+    this.paginatedProducts = [...this.products].slice(this.start, this.end)
+  }
+
+  pageUp() {
+    this.start = this.start + this.productsService.limit
+    this.end+= this.productsService.limit
+    this.paginatedProducts = [...this.products].slice(this.start, this.end)
   }
 }
