@@ -8,14 +8,18 @@ import {ProductsService} from "../../products/products.service";
 })
 export class ListComponent implements OnInit {
 
+  loading = false
   products: any = []
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
+    this.loading = true
     this.productsService.getFeaturedProducts().subscribe({
-      next: data => this.products = data
+      next: data => {
+        this.products = data
+        this.loading = false
+      }
     })
   }
-
 }

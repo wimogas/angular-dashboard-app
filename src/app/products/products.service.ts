@@ -20,6 +20,13 @@ export class ProductsService {
       )
   }
 
+  getProductById(id: string): Observable<any> {
+    return this.http.get(`https://fakestoreapi.com/products/${id}`)
+      .pipe(
+        tap(data => console.log(data))
+      )
+  }
+
   getFeaturedProducts() {
     return this.http.get(`https://fakestoreapi.com/products?limit=${this.limit}`)
       .pipe(

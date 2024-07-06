@@ -1,4 +1,7 @@
-<table class="table align-middle">
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+<table class="table align-middle" *ngIf="!loading">
   <thead>
   <tr>
     <th scope="col">Id</th>
@@ -12,7 +15,9 @@
   <tbody>
   <tr *ngFor="let product of products">
     <td>{{product.id}}</td>
-    <td><img [ngSrc]="product.image" alt="image" width="50" height="50"></td>
+    <td><div class="dashboard-list-product-image" [ngStyle]="{
+    'background-image': 'url(' + product.image + ')'
+    }"></div></td>
     <td>{{ product.title | trim: 25 }}</td>
     <td><span class="badge text-bg-secondary">{{ product.category }}</span></td>
     <td>{{ product.price | price: 'EUR' }}</td>

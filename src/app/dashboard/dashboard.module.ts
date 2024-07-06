@@ -7,7 +7,7 @@ import {ListComponent} from "./list/list.component";
 import {ChartComponent} from "./chart/chart.component";
 import {TrimPipe} from "../shared/trim.pipe";
 import {PricePipe} from "../shared/price.pipe";
-
+import {SpinnerComponent} from "../shared/spinner/spinner/spinner.component";
 
 @NgModule({
   declarations: [
@@ -15,12 +15,13 @@ import {PricePipe} from "../shared/price.pipe";
     ListComponent,
     ChartComponent
   ],
-    imports: [
-        CommonModule,
-        DashboardRoutingModule,
-        NgOptimizedImage,
-        TrimPipe,
-        PricePipe
-    ]
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    NgOptimizedImage,
+    TrimPipe,
+    PricePipe,
+    SpinnerComponent
+  ]
 })
 export class DashboardModule { }

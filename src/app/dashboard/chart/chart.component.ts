@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './chart.component.scss'
 })
 export class ChartComponent {
-
 }

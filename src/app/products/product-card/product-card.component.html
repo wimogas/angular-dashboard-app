@@ -1,21 +1,18 @@
-<div class="card p-4 m-2" style="max-height: 450px;">
+<div class="card m-2" style="max-height: 400px;">
   <div class="d-flex justify-content-center">
-    <img
-      ngSrc="{{product.image}}"
-      alt="product"
-      width="200"
-      height="200"
-    >
+    <div class="products-list-product-image" [ngStyle]="{
+    'background-image': 'url(' + product.image + ')'
+    }"></div>
   </div>
 
   <div class="card-body">
-    <h5 class="card-title">{{product.title | trim: 20}}</h5>
+    <h5 class="card-title products-list-product-title">{{product.title | trim: 25}}</h5>
     <div>
       <i class="bi-star-fill"></i> {{product.rating.rate}}
     </div>
     <div>
       {{product.price | price: 'EUR'}}
     </div>
-    <button class="btn btn-primary mt-2">View</button>
+    <button class="btn btn-primary mt-2" [routerLink]="['/products', product.id]">View</button>
   </div>
 </div>

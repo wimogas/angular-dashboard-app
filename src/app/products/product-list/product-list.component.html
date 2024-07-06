@@ -1,0 +1,17 @@
+<h1 class="my-5">Products</h1>
+
+<ng-container *ngIf="loading">
+  <app-spinner></app-spinner>
+</ng-container>
+
+<ng-container *ngIf="!loading">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let product of paginatedProducts">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end p-5">
+    <button class="btn btn-secondary me-3" (click)="pageDown()" [disabled]="(start - limit) < 0">Previous</button>
+    <button class="btn btn-secondary" (click)="pageUp()" [disabled]="(start + limit) >= total">Next</button>
+  </div>
+</ng-container>
