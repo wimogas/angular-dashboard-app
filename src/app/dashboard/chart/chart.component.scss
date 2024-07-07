@@ -1,9 +1,5 @@
-.ag-theme-alpine {
-  height: 500px;
-  width: 100%;
-}
-#chartContainer {
-  height: 300px;
-  width: 100%;
-  margin-top: 20px;
+.dashboard-chart {
+  display: flex;
+  align-items: center;
+  min-height: 300px;
 }

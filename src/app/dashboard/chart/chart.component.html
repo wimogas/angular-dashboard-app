@@ -1,0 +1,10 @@
+<div class="dashboard-chart">
+  <app-spinner *ngIf="loading"></app-spinner>
+  <canvas *ngIf="!loading" baseChart
+          [type]="'pie'"
+          [datasets]="pieChartDatasets"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend">
+  </canvas>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from "../models/User";
+import {User} from "../auth/models/User";
 import {BehaviorSubject, of, tap} from "rxjs";
 
 @Injectable({
@@ -14,8 +14,8 @@ export class AuthService {
 
   login() {
     const newUser = new User(
-      'username1',
-      'user@mail.com'
+      'admin',
+      'admin@mail.com'
     )
     return of(newUser).pipe(
       tap(data => this.user$.next(data))

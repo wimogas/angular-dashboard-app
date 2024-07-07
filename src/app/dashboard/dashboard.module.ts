@@ -8,7 +8,7 @@ import {ChartComponent} from "./chart/chart.component";
 import {TrimPipe} from "../shared/trim.pipe";
 import {PricePipe} from "../shared/price.pipe";
 import {SpinnerComponent} from "../shared/spinner/spinner/spinner.component";
-
+import {BaseChartDirective, provideCharts, withDefaultRegisterables} from 'ng2-charts';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -21,7 +21,9 @@ import {SpinnerComponent} from "../shared/spinner/spinner/spinner.component";
     NgOptimizedImage,
     TrimPipe,
     PricePipe,
-    SpinnerComponent
-  ]
+    SpinnerComponent,
+    BaseChartDirective
+  ],
+  providers: [provideCharts(withDefaultRegisterables())],
 })
 export class DashboardModule { }
