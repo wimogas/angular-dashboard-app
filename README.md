@@ -1,5 +1,8 @@
 # Angular Dashboard Application
 
+[VIEW APP](https://angular-dashboard-app.vercel.app/)
+
+
 ## Description
 
 This is a dashboard application built with Angular 18.0.3. This dashboard is designed to manage products and their respective categories. Along with the product and category management, the application provides visual data analysis using Chart.js 4.4.3.
