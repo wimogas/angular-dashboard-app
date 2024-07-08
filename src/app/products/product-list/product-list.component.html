@@ -1,4 +1,16 @@
-<h1 class="my-5">Products</h1>
+<h1 class="mt-5 mb-3">Products</h1>
+
+<div class="d-flex gap-3 align-items-center mb-4" *ngIf="!category">
+  <button class="btn btn-secondary" (click)="getProducts('men\'s clothing')">Men's clothing</button>
+  <button class="btn btn-secondary" (click)="getProducts('jewelery')">Jewelery</button>
+  <button class="btn btn-secondary" (click)="getProducts('electronics')">Electronics</button>
+  <button class="btn btn-secondary" (click)="getProducts('women\'s clothing')">Women's clothing</button>
+</div>
+
+<div class="d-flex gap-3 align-items-center mb-4" *ngIf="category">
+  <span>Category: "{{category}}"</span>
+  <button class="btn btn-dark" (click)="resetFilters()"><i class="bi-x"></i></button>
+</div>
 
 <ng-container *ngIf="loading">
   <app-spinner></app-spinner>

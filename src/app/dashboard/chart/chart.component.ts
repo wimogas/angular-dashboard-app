@@ -28,8 +28,8 @@ export class ChartComponent implements OnInit {
     this.loading = true
     this.productsService.getCategoriesData().subscribe({
       next: data => {
-        this.pieChartLabels = data.labels
-        this.pieChartDatasets[0].data = data.data
+        this.pieChartLabels = Object.keys(data)
+        this.pieChartDatasets[0].data = Object.values(data)
         this.loading = false
       }
     })

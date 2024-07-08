@@ -18,8 +18,8 @@
     <td><div class="dashboard-list-product-image" [ngStyle]="{
     'background-image': 'url(' + product.image + ')'
     }"></div></td>
-    <td>{{ product.title | trim: 25 }}</td>
-    <td><span class="badge text-bg-secondary">{{ product.category }}</span></td>
+    <td><a class="link-light" [routerLink]="['/products', product.id]">{{ product.title | trim: 25 }}</a></td>
+    <td><span class="badge text-bg-secondary"><a class="link-light" routerLink="/products" [queryParams]="{cat: product.category}">{{ product.category }}</a></span></td>
     <td>{{ product.price | price: 'EUR' }}</td>
     <td><i class="bi-star-fill"></i> {{ product.rating.rate }}</td>
   </tr>

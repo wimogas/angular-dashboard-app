@@ -1,1 +1,23 @@
-<h1>Categories</h1>
+<h1 class="my-5">Categories</h1>
+
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+<table class="table align-middle" *ngIf="!loading">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Products</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let category of categories; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{ category[0] | trim: 25 }}</td>
+    <td>{{ category[1] }}</td>
+    <td><button class="btn btn-primary" [routerLink]="['/products']" [queryParams]="{cat: category[0]}">View</button></td>
+  </tr>
+  </tbody>
+</table>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {delay, map, Observable, tap} from "rxjs";
 
-type Product = {
+export type Product = {
   id: number,
   title: string,
   description: string,
@@ -21,27 +21,31 @@ type Obj = {
 })
 export class ProductsService {
 
+  cachedProducts: Product[] | null = null
   limit = 6
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getProducts(): Observable<any> {
+  getProducts(category: string | null): Observable<Product[]> {
     return this.http.get<Product[]>(`https://fakestoreapi.com/products`)
       .pipe(
-        tap(data => console.log(data))
+        map(data => {
+          if (category) {
+            return data.filter(product => product.category === category)
+          } else {
+            return data
+          }
+        })
       )
   }
 
-  getProductById(id: string): Observable<any> {
-    return this.http.get(`https://fakestoreapi.com/products/${id}`)
-      .pipe(
-        tap(data => console.log(data))
-      )
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(`https://fakestoreapi.com/products/${id}`)
   }
 
-  getFeaturedProducts() {
+  getFeaturedProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`https://fakestoreapi.com/products`)
       .pipe(
         map(data =>
@@ -50,16 +54,14 @@ export class ProductsService {
             .slice(0,5))
       )
   }
-  getCategoriesData() {
+
+  getCategoriesData(): Observable<Obj> {
     return this.http.get<Product[]>(`https://fakestoreapi.com/products`)
       .pipe(
         map(data => {
           const categories: Obj = {}
           data.map(product => categories[product.category] ? categories[product.category] += 1 : categories[product.category] = 1)
-          return {
-            labels: Object.keys(categories),
-            data: Object.values(categories)
-          }
+          return categories
         })
       )
   }

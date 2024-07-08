@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ProductsService} from "../_services/products.service";
 
 @Component({
   selector: 'app-categories',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent {
+  loading = false
+  categories: any = []
 
+  constructor(private productsService: ProductsService) {}
+
+  ngOnInit() {
+    this.loading = true
+    this.productsService.getCategoriesData().subscribe({
+      next: data => {
+        this.categories = Object.entries(data)
+        console.log(this.categories)
+        this.loading = false
+      }
+    })
+  }
 }
