@@ -33,6 +33,14 @@ export class ProductListComponent implements OnInit {
   getProducts(category: string | null) {
     this.category = category
     this.loading = true
+    if(this.category) {
+      this.router.navigate(['/products'], {
+        queryParams: {
+          'cat': this.category
+        },
+        queryParamsHandling: 'merge'
+      })
+    }
     this.productsService.getProducts(category).subscribe({
       next: data => {
         this.limit = this.productsService.limit
@@ -70,12 +78,6 @@ export class ProductListComponent implements OnInit {
 
   resetFilters() {
     this.category = null
-    this.router.navigate(['/products'], {
-      queryParams: {
-        'cat': null
-      },
-      queryParamsHandling: 'merge'
-    })
     this.getProducts(this.category)
   }
 }
